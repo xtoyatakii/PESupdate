@@ -1,19 +1,19 @@
-﻿-- ___ ___  __   ____   __ __   _______ __ __   __ __   
+-- ___ ___  __   ____   __ __   _______ __ __   __ __   
 --| _,\ __/' _/ |  \ `v' / \ \_/ /_   _/__\\ `v' //  \  
 --| v_/ _|`._`. | -<`. .'   > , <  | || \/ |`. .'| /\ | 
 --|_| |___|___/ |__/ !_!   /_/ \_\ |_| \__/  !_! |_||_|                                                                                                                                                                                                      
   
 script_name("PES")
-script_version("0.0.1")
+script_version("0.0.2")
 --------local 
 local encoding = require 'encoding'
 encoding.default = 'CP1251'
-u8 = encoding.UTF8
-local nax = false -- позначаємо, що гра ще не запущена
+u8 = encoding.CP1251
+local nax = false -- позначаЇмо, що гра ще не запущена
 local inicfg = require "inicfg"
 local memory = require "memory"
 local samp = require 'lib.samp.events'
--------АВТООНОВЛЕННЯ by qrlk
+-------ј¬“ќќЌќ¬Ћ≈ЌЌя by qrlk
 function autoupdate(json_url, prefix, url)
   local dlstatus = require('moonloader').download_status
   local json = getWorkingDirectory() .. '\\'..thisScript().name..'-version.json'
@@ -99,11 +99,11 @@ autoupdate("https://raw.githubusercontent.com/xtoyatakii/PESupdate/main/PESj.jso
 	local _, playerid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 local	namess = sampGetPlayerNickname(playerid)
   if name[namess] == 'P' then
-	sampAddChatMessage(u8'Навіщо ти скачав цей скрипт? Таким тут не раді', -1)
+	sampAddChatMessage(u8'��', -1)
 	thisScript():unload()
 			end
   while true do
-  sampAddChatMessage(u8"тиг", -1) 
+  sampAddChatMessage(u8"����", -1) 
     wait(100)
 ---основа скрипту 
     local result, target =  getCharPlayerIsTargeting(playerHandle)
@@ -115,13 +115,13 @@ local	namess = sampGetPlayerNickname(playerid)
   while timerActive do
     wait(0)
     if not sampIsChatInputActive() and isKeyDown(0x52) then 
-      sampAddChatMessage(u8"встиг", -1) 
+      sampAddChatMessage(u8"�����", -1) 
       timerActive = false 
 	  nax = false
 	  ini.Settings.killed = ini.Settings.killed + 1
 	  inicfg.save(ini, "pes")
     elseif os.time() > timer then 
-      sampAddChatMessage(u8"не встиг", -1)
+      sampAddChatMessage(u8"�� �����", -1)
       timerActive = false 
 	  nax = false
 						end
