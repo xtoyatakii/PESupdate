@@ -4,7 +4,7 @@
 --|_| |___|___/ |__/ !_!   /_/ \_\ |_| \__/  !_! |_||_|                                                                                                                                                                                                      
   
 script_name("PES")
-script_version("0.0.1")
+script_version("0.0.2")
 --------local 
 local nax = false -- позначаємо, що гра ще не запущена
 local inicfg = require "inicfg"
