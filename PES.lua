@@ -27,7 +27,6 @@ local Update = nil
 end--]]
 
 function autoupdate(json_url, prefix, url)
-	set_encoding("Windows-1251")
   local dlstatus = require('moonloader').download_status
   local json = getWorkingDirectory() .. '\\'..thisScript().name..'-version.json'
   if doesFileExist(json) then os.remove(json) end
