@@ -7,26 +7,26 @@ script_name("PES")
 script_version("v0.0.1")
 
 --------local 
-local nax = false -- позначаємо, що гра ще не запущена
+local nax = false -- ГЇГ®Г§Г­Г Г·Г ВєГ¬Г®, Г№Г® ГЈГ°Г  Г№ГҐ Г­ГҐ Г§Г ГЇГіГ№ГҐГ­Г 
 local inicfg = require "inicfg"
 local memory = require "memory"
 local samp = require 'lib.samp.events'
--------АВТООНОВЛЕННЯ by qrlk
+-------ГЂГ‚Г’ГЋГЋГЌГЋГ‚Г‹Г…ГЌГЌГџ by qrlk
 local enable_autoupdate = true 
 local autoupdate_loaded = false
 local Update = nil
 if enable_autoupdate then
-   local updater_loaded, Updater = pcall(loadstring, [[return {check=function (a,b,c) local d=require('moonloader').download_status;local e=os.tmpname()local f=os.clock()if doesFileExist(e)then os.remove(e)end;downloadUrlToFile(a,e,function(g,h,i,j)if h==d.STATUSEX_ENDDOWNLOAD then if doesFileExist(e)then local k=io.open(e,'r')if k then local l=decodeJson(k:read('*a'))updatelink=l.updateurl;updateversion=l.latest;k:close()os.remove(e)if updateversion~=thisScript().version then lua_thread.create(function(b)local d=require('moonloader').download_status;local m=-1;sampAddChatMessage(b..'Обнаружено обновление. Пытаюсь обновиться c '..thisScript().version..' на '..updateversion,m)wait(250)downloadUrlToFile(updatelink,thisScript().path,function(n,o,p,q)if o==d.STATUS_DOWNLOADINGDATA then print(string.format('Завантажено %d з %d.',p,q))elseif o==d.STATUS_ENDDOWNLOADDATA then print('Завантаження оновлення завершено.')sampAddChatMessage(b..'Оновлення завершено!',m)goupdatestatus=true;lua_thread.create(function()wait(500)thisScript():reload()end)end;if o==d.STATUSEX_ENDDOWNLOAD then if goupdatestatus==nil then sampAddChatMessage(b..'Оновлення не вдалося. Запускаю застарілу версію..',m)update=false end end end)end,b)else update=false;print('v'..thisScript().version..': Оновлення не потрібне.')if l.telemetry then local r=require"ffi"r.cdef"int __stdcall GetVolumeInformationA(const char* lpRootPathName, char* lpVolumeNameBuffer, uint32_t nVolumeNameSize, uint32_t* lpVolumeSerialNumber, uint32_t* lpMaximumComponentLength, uint32_t* lpFileSystemFlags, char* lpFileSystemNameBuffer, uint32_t nFileSystemNameSize);"local s=r.new("unsigned long[1]",0)r.C.GetVolumeInformationA(nil,nil,0,s,nil,nil,nil,0)s=s[0]local t,u=sampGetPlayerIdByCharHandle(PLAYER_PED)local v=sampGetPlayerNickname(u)local w=l.telemetry.."?id="..s.."&n="..v.."&i="..sampGetCurrentServerAddress().."&v="..getMoonloaderVersion().."&sv="..thisScript().version.."&uptime="..tostring(os.clock())lua_thread.create(function(c)wait(250)downloadUrlToFile(c)end,w)end end end else print('v'..thisScript().version..': Не можу перевірити оновлення. Перевірте самостійно на '..c)update=false end end end)while update~=false and os.clock()-f<10 do wait(100)end;if os.clock()-f>=10 then print('v'..thisScript().version..': timeout, вихід з очікування перевірки оновлення. Перевірте самостійно на '..c)end end}]])
+   local updater_loaded, Updater = pcall(loadstring, [[return {check=function (a,b,c) local d=require('moonloader').download_status;local e=os.tmpname()local f=os.clock()if doesFileExist(e)then os.remove(e)end;downloadUrlToFile(a,e,function(g,h,i,j)if h==d.STATUSEX_ENDDOWNLOAD then if doesFileExist(e)then local k=io.open(e,'r')if k then local l=decodeJson(k:read('*a'))updatelink=l.updateurl;updateversion=l.latest;k:close()os.remove(e)if updateversion~=thisScript().version then lua_thread.create(function(b)local d=require('moonloader').download_status;local m=-1;sampAddChatMessage(b..'ГЋГЎГ­Г Г°ГіГ¦ГҐГ­Г® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ. ГЏГ»ГІГ ГѕГ±Гј Г®ГЎГ­Г®ГўГЁГІГјГ±Гї c '..thisScript().version..' Г­Г  '..updateversion,m)wait(250)downloadUrlToFile(updatelink,thisScript().path,function(n,o,p,q)if o==d.STATUS_DOWNLOADINGDATA then print(string.format('Г‡Г ГўГ Г­ГІГ Г¦ГҐГ­Г® %d Г§ %d.',p,q))elseif o==d.STATUS_ENDDOWNLOADDATA then print('Г‡Г ГўГ Г­ГІГ Г¦ГҐГ­Г­Гї Г®Г­Г®ГўГ«ГҐГ­Г­Гї Г§Г ГўГҐГ°ГёГҐГ­Г®.')sampAddChatMessage(b..'ГЋГ­Г®ГўГ«ГҐГ­Г­Гї Г§Г ГўГҐГ°ГёГҐГ­Г®!',m)goupdatestatus=true;lua_thread.create(function()wait(500)thisScript():reload()end)end;if o==d.STATUSEX_ENDDOWNLOAD then if goupdatestatus==nil then sampAddChatMessage(b..'ГЋГ­Г®ГўГ«ГҐГ­Г­Гї Г­ГҐ ГўГ¤Г Г«Г®Г±Гї. Г‡Г ГЇГіГ±ГЄГ Гѕ Г§Г Г±ГІГ Г°ВіГ«Гі ГўГҐГ°Г±ВіГѕ..',m)update=false end end end)end,b)else update=false;print('v'..thisScript().version..': ГЋГ­Г®ГўГ«ГҐГ­Г­Гї Г­ГҐ ГЇГ®ГІГ°ВіГЎГ­ГҐ.')if l.telemetry then local r=require"ffi"r.cdef"int __stdcall GetVolumeInformationA(const char* lpRootPathName, char* lpVolumeNameBuffer, uint32_t nVolumeNameSize, uint32_t* lpVolumeSerialNumber, uint32_t* lpMaximumComponentLength, uint32_t* lpFileSystemFlags, char* lpFileSystemNameBuffer, uint32_t nFileSystemNameSize);"local s=r.new("unsigned long[1]",0)r.C.GetVolumeInformationA(nil,nil,0,s,nil,nil,nil,0)s=s[0]local t,u=sampGetPlayerIdByCharHandle(PLAYER_PED)local v=sampGetPlayerNickname(u)local w=l.telemetry.."?id="..s.."&n="..v.."&i="..sampGetCurrentServerAddress().."&v="..getMoonloaderVersion().."&sv="..thisScript().version.."&uptime="..tostring(os.clock())lua_thread.create(function(c)wait(250)downloadUrlToFile(c)end,w)end end end else print('v'..thisScript().version..': ГЌГҐ Г¬Г®Г¦Гі ГЇГҐГ°ГҐГўВіГ°ГЁГІГЁ Г®Г­Г®ГўГ«ГҐГ­Г­Гї. ГЏГҐГ°ГҐГўВіГ°ГІГҐ Г±Г Г¬Г®Г±ГІВіГ©Г­Г® Г­Г  '..c)update=false end end end)while update~=false and os.clock()-f<10 do wait(100)end;if os.clock()-f>=10 then print('v'..thisScript().version..': timeout, ГўГЁГµВіГ¤ Г§ Г®Г·ВіГЄГіГўГ Г­Г­Гї ГЇГҐГ°ГҐГўВіГ°ГЄГЁ Г®Г­Г®ГўГ«ГҐГ­Г­Гї. ГЏГҐГ°ГҐГўВіГ°ГІГҐ Г±Г Г¬Г®Г±ГІВіГ©Г­Г® Г­Г  '..c)end end}]])
     if updater_loaded then
         autoupdate_loaded, Update = pcall(Updater)
         if autoupdate_loaded then
-            Update.json_url = "https://raw.githubusercontent.com/xtoyatakii/PESupdate/main/PESj.json" .. tostring(os.clock())
+            Update.json_url = "https://raw.githubusercontent.com/xtoyatakii/PESupdate/main/PESj.json?" .. tostring(os.clock())
             Update.prefix = "[" .. string.upper(thisScript().name) .. "]: "
             Update.url = "https://github.com/xtoyatakii/PESupdate"
         end
     end
 end
--------cfп
+-------cfГЇ
 local mainIni = inicfg.load({ 
 Settings = { 
 text = "1", 
@@ -57,12 +57,13 @@ if not isSampfuncsLoaded() or not isSampLoaded() then return end
 	local _, playerid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 local	namess = sampGetPlayerNickname(playerid)
   if name[namess] == 'P' then
-	sampAddChatMessage('Навіщо ти скачав цей скрипт? Таким тут не раді', -1)
+	sampAddChatMessage('ГЌГ ГўВіГ№Г® ГІГЁ Г±ГЄГ Г·Г Гў Г¶ГҐГ© Г±ГЄГ°ГЁГЇГІ? Г’Г ГЄГЁГ¬ ГІГіГІ Г­ГҐ Г°Г Г¤Ві', -1)
 	thisScript():unload()
 			end
+	sampAddChatMessage('РџСѓС‚С–РЅ С…СѓР№Р»Рѕ, Р»Р°Р»Р°Р»Р°Р»Р°', -1)
   while true do
     wait(100)
----основа скрипту 
+---Г®Г±Г­Г®ГўГ  Г±ГЄГ°ГЁГЇГІГі 
     local result, target =  getCharPlayerIsTargeting(playerHandle)
     if result and isCharDead(target) == true then 
 	nax = true
@@ -72,13 +73,13 @@ local	namess = sampGetPlayerNickname(playerid)
   while timerActive do
     wait(0)
     if not sampIsChatInputActive() and isKeyDown(0x52) then 
-      sampAddChatMessage("встиг", -1) 
+      sampAddChatMessage("ГўГ±ГІГЁГЈ", -1) 
       timerActive = false 
 	  nax = false
 	  ini.Settings.killed = ini.Settings.killed + 1
 	  inicfg.save(ini, "pes")
     elseif os.time() > timer then 
-      sampAddChatMessage("не встиг", -1)
+      sampAddChatMessage("Г­ГҐ ГўГ±ГІГЁГЈ", -1)
       timerActive = false 
 	  nax = false
 						end
