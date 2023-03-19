@@ -334,14 +334,14 @@ end
 
 function texttt()
       if ini.Settings.texts == 1 then 
-sampAddChatMessage(u8'Один', -1)
+sampAddChatMessage(u8'Один upd', -1)
 elseif ini.Settings.texts == 2 then 
-sampAddChatMessage(u8'Два', -1)
+sampAddChatMessage(u8'Дваupd', -1)
 elseif ini.Settings.texts == 3 then 
-sampAddChatMessage(u8'Три', -1)
+sampAddChatMessage(u8'Триupd', -1)
 elseif ini.Settings.texts == 4 then 
-sampAddChatMessage(u8'Чотири', -1)
+sampAddChatMessage(u8'Чотириupd', -1)
 elseif ini.Settings.texts == 5 then 
-sampAddChatMessage(u8'5', -1)
+sampAddChatMessage(u8'5upd', -1)
 end 
 end 
