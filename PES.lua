@@ -4,7 +4,7 @@
 --|_| |___|___/ |__/ !_!   /_/ \_\ |_| \__/  !_! |_||_|                                                                                                                                                                                                      
   
 script_name("PES")
-script_version("0.0.2")
+script_version("0.0.3")
 --------local 
 local encoding = require 'encoding'
 encoding.default = 'UTF-8'
