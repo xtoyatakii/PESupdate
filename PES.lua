@@ -203,11 +203,11 @@ imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, im
 		imgui.Begin('PES text', textt, imgui.WindowFlags.NoResize)
 		imgui.Text('Ваш текст після вбивства зараз:', imgui.SetCursorPos(imgui.ImVec2(4, 20.5)))
 		if ini.Settings.texts == 1 then
-		imgui.Link('*Подивитися*', 'Я думав ти сильніший, а ти якийсь слабак...\nТренируйся лузер', imgui.SetCursorPos(imgui.ImVec2(4, 40.5))) 
+		imgui.Link('*Подивитися*', 'Я думав ти сильніший, а ти якийсь слабак.\nТренируйся лузер', imgui.SetCursorPos(imgui.ImVec2(4, 40.5))) 
 		elseif ini.Settings.texts == 2 then
-		imgui.Link('*Подивитися*', 'Сьогодні помер наш дорогий %losernick\nЦе велика втрата для нас\nБудемо пам`ятати його!', imgui.SetCursorPos(imgui.ImVec2(4, 40.5))) 
+		imgui.Link('*Подивитися*', 'Чмоня навчись стріляти!', imgui.SetCursorPos(imgui.ImVec2(4, 40.5))) 
 		elseif ini.Settings.texts == 3 then
-		imgui.Link('*Подивитися*', 'Ви порушили закон, а тому Старший Брат виніс вам вирок...\nСмерть!', imgui.SetCursorPos(imgui.ImVec2(4, 40.5))) 
+		imgui.Link('*Подивитися*', 'Ви порушили закон, а тому Старший Брат виніс вам вирок.\nСВаш вирок - смерть!', imgui.SetCursorPos(imgui.ImVec2(4, 40.5))) 
 		elseif ini.Settings.texts == 4 then
 		imgui.Link('*Подивитися*', 'Hasta la vista!', imgui.SetCursorPos(imgui.ImVec2(4, 40.5))) 
 		elseif ini.Settings.texts == 5 then
@@ -217,7 +217,7 @@ imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, im
 	ini.Settings.texts = 1
 	inicfg.save(ini, "pes")
 	end 
-	if imgui.Button('Змінити на "Священик"', imgui.SetCursorPos(imgui.ImVec2(4, 120.5))) then
+	if imgui.Button('Змінити на "Чмоня"', imgui.SetCursorPos(imgui.ImVec2(4, 120.5))) then
 	ini.Settings.texts = 2
 	inicfg.save(ini, "pes")
 	end 
@@ -334,14 +334,18 @@ end
 
 function texttt()
       if ini.Settings.texts == 1 then 
-sampAddChatMessage(u8'Один upd', -1)
+sampAddChatMessage(u8'Я думав ти сильніший, а ти якийсь слабак.', -1)
+wait(500)
+sampAddChatMessage(u8'Тренируйся лузер', -1)
 elseif ini.Settings.texts == 2 then 
-sampAddChatMessage(u8'Дваupd', -1)
+sampAddChatMessage(u8'Чмоня навчись стріляти.', -1)
 elseif ini.Settings.texts == 3 then 
-sampAddChatMessage(u8'Триupd', -1)
+sampAddChatMessage(u8'Ви порушили закон, а тому Старший Брат виніс вам вирок.', -1)
+wait(500)
+sampAddChatMessage(u8'Ваш вирок - смерть.', -1)
 elseif ini.Settings.texts == 4 then 
-sampAddChatMessage(u8'Чотириupd', -1)
+sampAddChatMessage(u8'Hasta la vista!', -1)
 elseif ini.Settings.texts == 5 then 
-sampAddChatMessage(u8'5upd', -1)
+sampAddChatMessage(u8'See you in hell!', -1)
 end 
 end 
