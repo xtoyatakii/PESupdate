@@ -6,16 +6,14 @@
 script_name("PES")
 script_version("0.0.2")
 --------local 
-local nax = false -- ïîçíà÷àºìî, ùî ãðà ùå íå çàïóùåíà
+local nax = false -- позначаємо, що гра ще не запущена
 local inicfg = require "inicfg"
 local memory = require "memory"
 local samp = require 'lib.samp.events'
--------ÀÂÒÎÎÍÎÂËÅÍÍß by qrlk
+-------АВТООНОВЛЕННЯ by qrlk
 local encoding = require 'encoding'
 
 encoding.default = 'cp1251'
-local u8 = encoding.UTF8
-local function recode(u8) return encoding.UTF8:decode(u8) end
 function autoupdate(json_url, prefix, url)
   local dlstatus = require('moonloader').download_status
   local json = getWorkingDirectory() .. '\\'..thisScript().name..'-version.json'
@@ -35,21 +33,21 @@ function autoupdate(json_url, prefix, url)
               lua_thread.create(function(prefix)
                 local dlstatus = require('moonloader').download_status
                 local color = -1
-                sampAddChatMessage((prefix..'Îáíàðóæåíî îáíîâëåíèå. Ïûòàþñü îáíîâèòüñÿ c '..thisScript().version..' íà '..updateversion), color)
+                sampAddChatMessage((prefix..'Обнаружено обновление. Пытаюсь обновиться c '..thisScript().version..' на '..updateversion), color)
                 wait(250)
                 downloadUrlToFile(updatelink, thisScript().path,
                   function(id3, status1, p13, p23)
                     if status1 == dlstatus.STATUS_DOWNLOADINGDATA then
-                      print(string.format('Çàãðóæåíî %d èç %d.', p13, p23))
+                      print(string.format('Загружено %d из %d.', p13, p23))
                     elseif status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
-                      print('Çàãðóçêà îáíîâëåíèÿ çàâåðøåíà.')
-                      sampAddChatMessage((prefix..'Îáíîâëåíèå çàâåðøåíî!'), color)
+                      print('Загрузка обновления завершена.')
+                      sampAddChatMessage((prefix..'Обновление завершено!'), color)
                       goupdatestatus = true
                       lua_thread.create(function() wait(500) thisScript():reload() end)
                     end
                     if status1 == dlstatus.STATUSEX_ENDDOWNLOAD then
                       if goupdatestatus == nil then
-                        sampAddChatMessage((prefix..'Îáíîâëåíèå ïðîøëî íåóäà÷íî. Çàïóñêàþ óñòàðåâøóþ âåðñèþ..'), color)
+                        sampAddChatMessage((prefix..'Обновление прошло неудачно. Запускаю устаревшую версию..'), color)
                         update = false
                       end
                     end
@@ -59,11 +57,11 @@ function autoupdate(json_url, prefix, url)
               )
             else
               update = false
-              print('v'..thisScript().version..': Îáíîâëåíèå íå òðåáóåòñÿ.')
+              print('v'..thisScript().version..': Обновление не требуется.')
             end
           end
         else
-          print('v'..thisScript().version..': Íå ìîãó ïðîâåðèòü îáíîâëåíèå. Ñìèðèòåñü èëè ïðîâåðüòå ñàìîñòîÿòåëüíî íà '..url)
+          print('v'..thisScript().version..': Не могу проверить обновление. Смиритесь или проверьте самостоятельно на '..url)
           update = false
         end
       end
@@ -71,7 +69,7 @@ function autoupdate(json_url, prefix, url)
   )
   while update ~= false do wait(100) end
 end
--------cfï
+-------cfп
 local mainIni = inicfg.load({ 
 Settings = { 
 text = "1", 
@@ -100,13 +98,13 @@ autoupdate("https://raw.githubusercontent.com/xtoyatakii/PESupdate/main/PESj.jso
 	local _, playerid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 local	namess = sampGetPlayerNickname(playerid)
   if name[namess] == 'P' then
-	sampAddChatMessage('Íàâ³ùî òè ñêà÷àâ öåé ñêðèïò? Òàêèì òóò íå ðàä³', -1)
+	sampAddChatMessage('Навіщо ти скачав цей скрипт? Таким тут не раді', -1)
 	thisScript():unload()
 			end
   while true do
-  sampAddChatMessage(u8'Îáíîâ', -1)
+  sampAddChatMessage(u8'Обнов', -1)
     wait(100)
----îñíîâà ñêðèïòó 
+---основа скрипту 
     local result, target =  getCharPlayerIsTargeting(playerHandle)
     if result and isCharDead(target) == true then 
 	nax = true
@@ -116,13 +114,13 @@ local	namess = sampGetPlayerNickname(playerid)
   while timerActive do
     wait(0)
     if not sampIsChatInputActive() and isKeyDown(0x52) then 
-      sampAddChatMessage("âñòèã", -1) 
+      sampAddChatMessage("встиг", -1) 
       timerActive = false 
 	  nax = false
 	  ini.Settings.killed = ini.Settings.killed + 1
 	  inicfg.save(ini, "pes")
     elseif os.time() > timer then 
-      sampAddChatMessage("íå âñòèã", -1)
+      sampAddChatMessage("не встиг", -1)
       timerActive = false 
 	  nax = false
 						end
