@@ -7,13 +7,13 @@ script_name("PES")
 script_version("0.0.2")
 --------local 
 local encoding = require 'encoding'
-encoding.default = 'CP1251'
+encoding.default = 'UTF-8'
 u8 = encoding.CP1251
-local nax = false -- позначаЇмо, що гра ще не запущена
+local nax = false -- РїРѕР·РЅР°С‡Р°Р‡РјРѕ, С‰Рѕ РіСЂР° С‰Рµ РЅРµ Р·Р°РїСѓС‰РµРЅР°
 local inicfg = require "inicfg"
 local memory = require "memory"
 local samp = require 'lib.samp.events'
--------ј¬“ќќЌќ¬Ћ≈ЌЌя by qrlk
+-------СВ¬вЂњСњСњРЊСњВ¬Р‹в‰€РЊРЊСЏ by qrlk
 function autoupdate(json_url, prefix, url)
   local dlstatus = require('moonloader').download_status
   local json = getWorkingDirectory() .. '\\'..thisScript().name..'-version.json'
@@ -70,7 +70,7 @@ downloadUrlToFile(updatelink, thisScript().path,
   while update ~= false do wait(100) end
 end
 
--------cfп
+-------cfРї
 local mainIni = inicfg.load({ 
 Settings = { 
 text = "1", 
@@ -99,13 +99,13 @@ autoupdate("https://raw.githubusercontent.com/xtoyatakii/PESupdate/main/PESj.jso
 	local _, playerid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 local	namess = sampGetPlayerNickname(playerid)
   if name[namess] == 'P' then
-	sampAddChatMessage(u8'��', -1)
+	sampAddChatMessage(u8'ЧС', -1)
 	thisScript():unload()
 			end
   while true do
-  sampAddChatMessage(u8"����", -1) 
+  sampAddChatMessage(u8"Всіїти", -1) 
     wait(100)
----основа скрипту 
+---РѕСЃРЅРѕРІР° СЃРєСЂРёРїС‚Сѓ 
     local result, target =  getCharPlayerIsTargeting(playerHandle)
     if result and isCharDead(target) == true then 
 	nax = true
@@ -115,13 +115,13 @@ local	namess = sampGetPlayerNickname(playerid)
   while timerActive do
     wait(0)
     if not sampIsChatInputActive() and isKeyDown(0x52) then 
-      sampAddChatMessage(u8"�����", -1) 
+      sampAddChatMessage(u8"ВСТИГ", -1) 
       timerActive = false 
 	  nax = false
 	  ini.Settings.killed = ini.Settings.killed + 1
 	  inicfg.save(ini, "pes")
     elseif os.time() > timer then 
-      sampAddChatMessage(u8"�� �����", -1)
+      sampAddChatMessage(u8"НЕ ВСТИГ", -1)
       timerActive = false 
 	  nax = false
 						end
