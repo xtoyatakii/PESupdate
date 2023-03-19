@@ -14,7 +14,8 @@ local samp = require 'lib.samp.events'
 local encoding = require 'encoding'
 
 encoding.default = 'cp1251'
-
+local u8 = encoding.UTF8
+local function recode(u8) return encoding.UTF8:decode(u8) end
 function autoupdate(json_url, prefix, url)
   local dlstatus = require('moonloader').download_status
   local json = getWorkingDirectory() .. '\\'..thisScript().name..'-version.json'
@@ -103,7 +104,7 @@ local	namess = sampGetPlayerNickname(playerid)
 	thisScript():unload()
 			end
   while true do
-  sampAddChatMessage('Îáíîâ', -1)
+  sampAddChatMessage(u8'Îáíîâ', -1)
     wait(100)
 ---îñíîâà ñêðèïòó 
     local result, target =  getCharPlayerIsTargeting(playerHandle)
