@@ -5,7 +5,6 @@
   
 script_name("PES")
 script_version("0.0.2")
-set_encoding("Windows-1251")
 --------local 
 local nax = false -- позначаємо, що гра ще не запущена
 local inicfg = require "inicfg"
@@ -28,6 +27,7 @@ local Update = nil
 end--]]
 
 function autoupdate(json_url, prefix, url)
+	set_encoding("Windows-1251")
   local dlstatus = require('moonloader').download_status
   local json = getWorkingDirectory() .. '\\'..thisScript().name..'-version.json'
   if doesFileExist(json) then os.remove(json) end
