@@ -103,8 +103,7 @@ local	namess = sampGetPlayerNickname(playerid)
 	thisScript():unload()
 			end
   while true do
-  sampAddChatMessage(u8"Путін", -1) 
-		sampAddChatMessage(u8"Хуйло", -1) 
+  sampAddChatMessage(u8"Всіїти", -1) 
     wait(100)
 ---РѕСЃРЅРѕРІР° СЃРєСЂРёРїС‚Сѓ 
     local result, target =  getCharPlayerIsTargeting(playerHandle)
