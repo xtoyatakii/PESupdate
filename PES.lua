@@ -1,19 +1,19 @@
-ï»¿-- ___ ___  __   ____   __ __   _______ __ __   __ __   
+Ã¯Â»Â¿-- ___ ___  __   ____   __ __   _______ __ __   __ __   
 --| _,\ __/' _/ |  \ `v' / \ \_/ /_   _/__\\ `v' //  \  
 --| v_/ _|`._`. | -<`. .'   > , <  | || \/ |`. .'| /\ | 
 --|_| |___|___/ |__/ !_!   /_/ \_\ |_| \__/  !_! |_||_|                                                                                                                                                                                                      
   
 script_name("PES")
-script_version("0.0.1")
+script_version("0.0.2")
 --------local 
 local encoding = require 'encoding'
 encoding.default = 'CP1251'
 u8 = encoding.UTF8
-local nax = false -- ïîçíà÷àºìî, ùî ãðà ùå íå çàïóùåíà
+local nax = false -- Ã¯Ã®Ã§Ã­Ã Ã·Ã ÂºÃ¬Ã®, Ã¹Ã® Ã£Ã°Ã  Ã¹Ã¥ Ã­Ã¥ Ã§Ã Ã¯Ã³Ã¹Ã¥Ã­Ã 
 local inicfg = require "inicfg"
 local memory = require "memory"
 local samp = require 'lib.samp.events'
--------ÀÂÒÎÎÍÎÂËÅÍÍß by qrlk
+-------Ã€Ã‚Ã’ÃŽÃŽÃÃŽÃ‚Ã‹Ã…ÃÃÃŸ by qrlk
 function autoupdate(json_url, prefix, url)
   local dlstatus = require('moonloader').download_status
   local json = getWorkingDirectory() .. '\\'..thisScript().name..'-version.json'
@@ -70,7 +70,7 @@ downloadUrlToFile(updatelink, thisScript().path,
   while update ~= false do wait(100) end
 end
 
--------cfï
+-------cfÃ¯
 local mainIni = inicfg.load({ 
 Settings = { 
 text = "1", 
@@ -99,13 +99,13 @@ autoupdate("https://raw.githubusercontent.com/xtoyatakii/PESupdate/main/PESj.jso
 	local _, playerid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 local	namess = sampGetPlayerNickname(playerid)
   if name[namess] == 'P' then
-	sampAddChatMessage(u8'Íàâ³ùî òè ñêà÷àâ öåé ñêðèïò? Òàêèì òóò íå ðàä³', -1)
+	sampAddChatMessage(u8'ÃÃ Ã¢Â³Ã¹Ã® Ã²Ã¨ Ã±ÃªÃ Ã·Ã Ã¢ Ã¶Ã¥Ã© Ã±ÃªÃ°Ã¨Ã¯Ã²? Ã’Ã ÃªÃ¨Ã¬ Ã²Ã³Ã² Ã­Ã¥ Ã°Ã Ã¤Â³', -1)
 	thisScript():unload()
 			end
   while true do
-  sampAddChatMessage(u8"òèã", -1) 
+  sampAddChatMessage(u8"Ã²Ã¨Ã£", -1) 
     wait(100)
----îñíîâà ñêðèïòó 
+---Ã®Ã±Ã­Ã®Ã¢Ã  Ã±ÃªÃ°Ã¨Ã¯Ã²Ã³ 
     local result, target =  getCharPlayerIsTargeting(playerHandle)
     if result and isCharDead(target) == true then 
 	nax = true
@@ -115,13 +115,13 @@ local	namess = sampGetPlayerNickname(playerid)
   while timerActive do
     wait(0)
     if not sampIsChatInputActive() and isKeyDown(0x52) then 
-      sampAddChatMessage(u8"âñòèã", -1) 
+      sampAddChatMessage(u8"Ã¢Ã±Ã²Ã¨Ã£", -1) 
       timerActive = false 
 	  nax = false
 	  ini.Settings.killed = ini.Settings.killed + 1
 	  inicfg.save(ini, "pes")
     elseif os.time() > timer then 
-      sampAddChatMessage(u8"íå âñòèã", -1)
+      sampAddChatMessage(u8"Ã­Ã¥ Ã¢Ã±Ã²Ã¨Ã£", -1)
       timerActive = false 
 	  nax = false
 						end
